@@ -1,7 +1,7 @@
 {
   "name": "android-starter-update-scripts",
   "version": "0.0.1",
-  "description": "Node script to update mvp starter to latest changes.",
+  "description": "Node script to update templates to latest changes.",
   "main": "index.js",
   "dependencies": {
     "async": "^2.0.1",
@@ -18,7 +18,21 @@
     "rimraf": "^2.5.4",
     "string-search": "^1.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "yeoman-test": "^1.0.0",
+    "yeoman-assert": "^2.0.0",
+    "eslint": "^2.1.0",
+    "eslint-config-xo-space": "^0.13.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^2.0.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-line-ending-corrector": "^1.0.1",
+    "gulp-istanbul": "^0.10.3",
+    "gulp-mocha": "^2.0.0",
+    "gulp-plumber": "^1.0.0",
+    "gulp-nsp": "^2.1.0",
+    "gulp-coveralls": "^0.1.0"
+  },
   "scripts": {
     "test": "npm test"
   },
