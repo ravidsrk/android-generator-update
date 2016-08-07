@@ -1,0 +1,29 @@
+{
+  "name": "android-starter-update-scripts",
+  "version": "0.0.1",
+  "description": "Node script to update mvp starter to latest changes.",
+  "main": "index.js",
+  "dependencies": {
+    "async": "^2.0.1",
+    "filter-files": "^0.4.0",
+    "find-in-files": "^0.3.1",
+    "mkdirp": "^0.5.1",
+    "mv": "^2.1.1",
+    "ncp": "^2.0.0",
+    "nodegit": "^0.14.1",
+    "path": "^0.12.7",
+    "renamer": "^0.5.7",
+    "replace": "^0.3.0",
+    "rimraf": "^2.5.4",
+    "string-search": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "android"
+  ],
+  "author": "Ravindra Kumar <ravindrakumar8088@gmail.com> (https://github.com/ravidsrk/)",
+  "license": "MIT"
+}
