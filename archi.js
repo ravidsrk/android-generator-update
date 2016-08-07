@@ -15,8 +15,8 @@ const Finder = require('fs-finder');
 
 // Clone a given repository into the `./tmp` folder.
 rimraf.sync(__dirname + '/templates')
-  // rimraf.sync(__dirname + '/final-templates')
-  // mkdirp('./final-templates')
+rimraf.sync(__dirname + '/rmp')
+mkdirp('./templates')
 
 Git.Clone("https://github.com/googlesamples/android-architecture", "./tmp")
   .then(function(repo) {
@@ -25,43 +25,43 @@ Git.Clone("https://github.com/googlesamples/android-architecture", "./tmp")
     // checkOutAndCopy(repo,"todo-mvp-clean")
     // checkOutAndCopy(repo,"todo-mvp-dagger")
     // checkOutAndCopy(repo,"todo-mvp-contentproviders")
-    checkOutAndCopy(repo, "todo-databinding");
+    checkOutAndCopy(repo,"todo-databinding");
   })
   .catch(function(err) {
     console.log(err);
   });
 
-function checkOutAndCopy(repo, name) {
+function checkOutAndCopy(repo,name) {
   repo.getBranch('refs/remotes/origin/' + name)
     .then(function(reference) {
-      console.log("Checking out branch " + name);
-      return repo.checkoutRef(reference);
+        console.log("Checking out branch "+ name);
+        return repo.checkoutRef(reference);
     })
     .then(function() {
-
+      
       replace({
-        regex: "com.example.android.architecture.blueprints.todoapp",
-        replacement: "<%= appPackage %>",
-        paths: ['./templates/todoapp'],
-        recursive: true,
-        silent: true,
+            regex: "com.example.android.architecture.blueprints.todoapp",
+            replacement: "<%= appPackage %>",
+            paths: ['./templates/todoapp'],
+            recursive: true,
+            silent: true,
       });
 
-      mv('./templates/todoapp/.gitignore', './templates/todoapp/gitignore', function(err) {
+      mv('./tmp/todoapp/.gitignore', './templates/todoapp/gitignore', function(err) {
         console.log("Renamed root folder .gitignore")
       });
-
-      mv('./templates/todoapp/app/.gitignore', './templates/todoapp/app/gitignore', function(err) {
+      
+      mv('./tmp/todoapp/app/.gitignore', './templates/todoapp/app/gitignore', function(err) {
         console.log("Renamed app folder .gitignore")
       });
 
-      console.log("Copying files to ./templates/" + name);
+      console.log("Copying files to ./templates/"+ name);
       ncp.limit = 1600;
-      ncp('./templates/todoapp', './templates/' + name, function(err) {
-        if (err) {
-          return console.error(err);
-        }
-        console.log('Copying complete!');
+      ncp('./tmp/todoapp', './templates/'+ name, function (err) {
+       if (err) {
+         return console.error(err);
+       }
+       console.log('Copying complete!');
       });
     });
-}
+  }
