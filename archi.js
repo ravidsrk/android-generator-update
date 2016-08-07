@@ -57,7 +57,7 @@ function checkOutAndCopy(repo,name) {
 
       console.log("Copying files to ./templates/"+ name);
       ncp.limit = 1600;
-      ncp('./templates/todoapp', './templates/'+ name, function (err) {
+      ncp('./tmp/todoapp', './templates/'+ name, function (err) {
        if (err) {
          return console.error(err);
        }
