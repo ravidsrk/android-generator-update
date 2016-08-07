@@ -1,5 +1,5 @@
 {
-  "name": "android-starter-update-scripts",
+  "name": "android-generator-update",
   "version": "0.0.1",
   "description": "Node script to update templates to latest changes.",
   "main": "index.js",
