@@ -18,7 +18,7 @@ rimraf.sync(__dirname + '/templates')
 // rimraf.sync(__dirname + '/final-templates')
 // mkdirp('./final-templates')
 
-Git.Clone("https://github.com/googlesamples/android-architecture", "./templates")
+Git.Clone("https://github.com/googlesamples/android-architecture", "./tmp")
   .then(function(repo) {
     // checkOutAndCopy(repo,"todo-mvp")
     // checkOutAndCopy(repo,"todo-mvp-loaders");
@@ -55,9 +55,9 @@ function checkOutAndCopy(repo,name) {
         console.log("Renamed app folder .gitignore")
       });
 
-      console.log("Copying files to ./final-templates/"+ name);
+      console.log("Copying files to ./templates/"+ name);
       ncp.limit = 1600;
-      ncp('./templates/todoapp', './final-templates/'+ name, function (err) {
+      ncp('./templates/todoapp', './templates/'+ name, function (err) {
        if (err) {
          return console.error(err);
        }
