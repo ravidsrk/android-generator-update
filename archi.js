@@ -15,8 +15,8 @@ const Finder = require('fs-finder');
 
 // Clone a given repository into the `./tmp` folder.
 rimraf.sync(__dirname + '/templates')
-// rimraf.sync(__dirname + '/final-templates')
-// mkdirp('./final-templates')
+rimraf.sync(__dirname + '/rmp')
+mkdirp('./templates')
 
 Git.Clone("https://github.com/googlesamples/android-architecture", "./tmp")
   .then(function(repo) {
@@ -47,11 +47,11 @@ function checkOutAndCopy(repo,name) {
             silent: true,
       });
 
-      mv('./templates/todoapp/.gitignore', './templates/todoapp/gitignore', function(err) {
+      mv('./tmp/todoapp/.gitignore', './templates/todoapp/gitignore', function(err) {
         console.log("Renamed root folder .gitignore")
       });
       
-      mv('./templates/todoapp/app/.gitignore', './templates/todoapp/app/gitignore', function(err) {
+      mv('./tmp/todoapp/app/.gitignore', './templates/todoapp/app/gitignore', function(err) {
         console.log("Renamed app folder .gitignore")
       });
 
